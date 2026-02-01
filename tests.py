@@ -77,10 +77,9 @@ class TestBooksCollector:
     @pytest.mark.parametrize('my_books_genre', [{'Гарри Поттер': '', 'Дюна': ''}, {'Гарри Поттер2': '', 'Дюна2': ''}])
     def test_get_books_genre(self, my_books_genre):
         collector = BooksCollector()
-        books = list(my_books_genre.keys())
 
-        collector.add_new_book(books[0])
-        collector.add_new_book(books[1])
+        for book, _ in my_books_genre.items():
+            collector.add_new_book(book)
 
         books_genre = collector.get_books_genre()
 
